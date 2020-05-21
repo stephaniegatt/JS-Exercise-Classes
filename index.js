@@ -41,8 +41,35 @@ class Airplane {
 */
 
 class Person {
-
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(food) {
+    if (this.stomach.length < 10) {
+      return this.stomach.push(food);
+    }
+  }
+  poop() {
+    this.stomach = [];
+  }
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
 }
+
+const personOne = new Person("Stephanie", 35);
+
+console.log(personOne.toString());
+personOne.eat("Pickles");
+personOne.eat("Pasta");
+personOne.eat("Paneer");
+console.log(personOne.stomach);
+personOne.poop();
+console.log(personOne.stomach);
+
+
 
 /*
   TASK 2
@@ -59,8 +86,31 @@ class Person {
 */
 
 class Car {
-
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons) {
+    this.tank = gallons + this.tank;
+  }
+  drive(distance) {
+    const gallonsNeeded = distance / this.milesPerGallon;
+    if (this.tank < gallonsNeeded) {
+      const howManyMiles = this.milesPerGallon * this.tank;
+      this.odometer += howManyMiles;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+    this.odometer += distance;
+    this.tank -= gallonsNeeded
+  }
 }
+
+const carOne = new Car("Jetta", 30);
+console.log(carOne.fill(6));
+console.log(carOne.drive(80));
 
 /*
   TASK 3
@@ -75,7 +125,7 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attrs)
 }
 
 /*
