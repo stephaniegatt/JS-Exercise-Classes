@@ -135,13 +135,13 @@ class Lambdasian {
   }
 };
 
-const instructorOne = new Lambdasian({
+const lambda1 = new Lambdasian({
   name: "Judy",
   age: 55,
   location: "Philly",
 });
 
-console.log(instructorOne.speak());
+console.log(lambda1.speak());
 
 /*
   TASK 4
@@ -157,9 +157,32 @@ console.log(instructorOne.speak());
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian {
+  constructor(attrs) {
+    super(attrs);
+    this.specialty = attrs.specialty;
+    this.favLanguage = attrs.favLanguage;
+    this.catchPhrase = attrs.catchPhrase;
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject) {
+    return `${student} receives a perfect score on ${subject}`;
+  }
+};
 
-}
+const instructorOne = new Instructor({
+  name: "Regina",
+  age: 24,
+  location: "Austin",
+  specialty: "Front End",
+  favLanguage: "JS",
+  catchPhrase: "Its an evil world we live in",
+});
+
+console.log(instructorOne.demo("CSS"));
+console.log(instructorOne.grade("Tate", "CSS"));
 
 /*
   TASK 5
